@@ -4,8 +4,8 @@ import org.example.post.domain.common.DatetimeInfo;
 
 public abstract class Content {
 
-  String contentText;
-  final DatetimeInfo dateTimeInfo;
+  protected String contentText;
+  protected final DatetimeInfo dateTimeInfo;
 
   public Content(String contentText) {
     checkText(contentText);
