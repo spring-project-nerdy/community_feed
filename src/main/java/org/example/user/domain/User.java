@@ -1,14 +1,20 @@
 package org.example.user.domain;
 
 import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.example.common.domain.PositiveIntegerCounter;
 
+@Getter
+@Builder
+@AllArgsConstructor
 public class User {
 
-  private final Long id;
-  private final UserInfo info;
-  private final PositiveIntegerCounter followingCount;
-  private final PositiveIntegerCounter followerCount;
+  private Long id;
+  private UserInfo info;
+  private PositiveIntegerCounter followingCount;
+  private PositiveIntegerCounter followerCount;
 
   public User(Long id, UserInfo userinfo) {
     if(userinfo == null) {
@@ -75,16 +81,13 @@ public class User {
   public int followerCount() {
     return followerCount.getCount();
   }
-
-  public UserInfo getInfo() {
-    return info;
+  
+  public String getProfileImage() {
+    return info.getProfileImageUrl();
   }
-
-  public PositiveIntegerCounter getFollowingCount() {
-    return followingCount;
+  
+  public String getName() {
+    return info.getName();
   }
-
-  public PositiveIntegerCounter getFollowerCount() {
-    return followerCount;
-  }
+  
 }

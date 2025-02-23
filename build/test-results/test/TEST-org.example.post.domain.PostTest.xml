@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.post.domain.PostTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-02-23T06:43:21" hostname="juyeong-ui-MacBookPro.local" time="0.004">
+  <properties/>
+  <testcase name="givenPostCreate_whenUpdateContent_thenContentShouldBeUpdated()" classname="org.example.post.domain.PostTest" time="0.0"/>
+  <testcase name="givenPostCreated_whenLike_thenLikeCountShouldBe1()" classname="org.example.post.domain.PostTest" time="0.0"/>
+  <testcase name="givenPostCreate_whenUnlike_thenLikeCountShouldBe0()" classname="org.example.post.domain.PostTest" time="0.0"/>
+  <testcase name="givenPostCreated_whenUpdatedOtherUserContent_thenThrowExecption()" classname="org.example.post.domain.PostTest" time="0.001"/>
+  <testcase name="givenPostCreated_whenLikeByOtherUser_thenThrowException()" classname="org.example.post.domain.PostTest" time="0.0"/>
+  <testcase name="givenPostCreatedAndLike_whenUnlike_thenLikeCountShouldBe0()" classname="org.example.post.domain.PostTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.post.domain.comment.CommentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-02-23T06:43:21" hostname="juyeong-ui-MacBookPro.local" time="0.003">
+  <properties/>
+  <testcase name="givenComment_whenUpdateContent_thenShouldBeUpdate()" classname="org.example.post.domain.comment.CommentTest" time="0.0"/>
+  <testcase name="givenCommentCreateAndLike_whenUnlike_thenLikeCountShouldBe0()" classname="org.example.post.domain.comment.CommentTest" time="0.0"/>
+  <testcase name="givenCommentCreated_whenLike_thenLikeCountShouldBe1()" classname="org.example.post.domain.comment.CommentTest" time="0.0"/>
+  <testcase name="givenCommentCreated_whenLikeBySelf_thenThrowException()" classname="org.example.post.domain.comment.CommentTest" time="0.001"/>
+  <testcase name="givenComment_whenUpdateContentOver100_thenThrowException()" classname="org.example.post.domain.comment.CommentTest" time="0.001"/>
+  <testcase name="givenCommentCreated_whenUnlike_thenLikeCountShouldBe0()" classname="org.example.post.domain.comment.CommentTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

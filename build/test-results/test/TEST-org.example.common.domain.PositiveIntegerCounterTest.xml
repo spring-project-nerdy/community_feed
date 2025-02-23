@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.common.domain.PositiveIntegerCounterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-23T06:43:21" hostname="juyeong-ui-MacBookPro.local" time="0.009">
+  <properties/>
+  <testcase name="givenCreated_whenDecrease_thenCountIzZero()" classname="org.example.common.domain.PositiveIntegerCounterTest" time="0.007"/>
+  <testcase name="givenCreatedAndIncrease_whenDecrease_thenCountIsZero()" classname="org.example.common.domain.PositiveIntegerCounterTest" time="0.0"/>
+  <testcase name="givenCreated_whenIncrease_thenCountIsOne()" classname="org.example.common.domain.PositiveIntegerCounterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

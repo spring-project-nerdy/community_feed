@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.post.application.PostServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-23T06:43:21" hostname="juyeong-ui-MacBookPro.local" time="0.003">
+  <properties/>
+  <testcase name="givenCreatePost_whenUpdate_thenReturnUpdatePost()" classname="org.example.post.application.PostServiceTest" time="0.0"/>
+  <testcase name="givenCreatedPost_whenUnliked_thenReturnPostWithoutLike()" classname="org.example.post.application.PostServiceTest" time="0.0"/>
+  <testcase name="givenCreatedPost_whenLiked_thenReturnPostWithLike()" classname="org.example.post.application.PostServiceTest" time="0.001"/>
+  <testcase name="givenCreatedPost_whenLikedTwice_thenReturnPostWithLike()" classname="org.example.post.application.PostServiceTest" time="0.0"/>
+  <testcase name="givenPostRequestDto_whenCreate_thenReturnPost()" classname="org.example.post.application.PostServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
