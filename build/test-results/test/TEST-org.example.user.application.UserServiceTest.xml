@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.user.application.UserServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-23T06:43:21" hostname="juyeong-ui-MacBookPro.local" time="0.0">
-  <properties/>
-  <testcase name="givenUserInfoDto_whenCreateUser_thenCanFindUser()" classname="org.example.user.application.UserServiceTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
