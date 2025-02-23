@@ -1,11 +1,18 @@
 package org.example.post.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.example.common.domain.PositiveIntegerCounter;
 import org.example.post.domain.content.Content;
 import org.example.post.domain.content.PostContent;
 import org.example.post.domain.content.PostPublicationState;
 import org.example.user.domain.User;
 
+@Builder
+@AllArgsConstructor
+@Getter
 public class Post {
 
   private final Long id;
