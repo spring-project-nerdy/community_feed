@@ -97,6 +97,10 @@ local.properties
 .idea/**/gradle.xml
 .idea/**/libraries
 
+.gradle
+**/build/
+!src/**/build/
+
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
@@ -187,7 +191,8 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -237,5 +242,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij,windows,macos

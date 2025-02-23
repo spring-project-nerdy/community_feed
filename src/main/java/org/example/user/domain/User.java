@@ -18,7 +18,7 @@ public class User {
 
   public User(Long id, UserInfo userinfo) {
     if(userinfo == null) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("UserInfo cannot be null");
     }
 
     this.id = id;
@@ -29,7 +29,7 @@ public class User {
 
   public void follow(User targetUser) {
     if (targetUser.equals(this)) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("");
     }
 
     followingCount.increase();
@@ -74,11 +74,11 @@ public class User {
     return id;
   }
 
-  public int followingCount() {
+  public int getFollowingCount() {
     return followingCount.getCount();
   }
 
-  public int followerCount() {
+  public int getFollowerCount() {
     return followerCount.getCount();
   }
   

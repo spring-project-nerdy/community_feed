@@ -71,11 +71,11 @@ class UserTest {
     user1.follow(user2);
 
     // then
-    assertEquals(1, user1.followingCount());
-    assertEquals(0, user1.followerCount());
+    assertEquals(1, user1.getFollowingCount());
+    assertEquals(0, user1.getFollowerCount());
 
-    assertEquals(0, user2.followingCount());
-    assertEquals(1, user2.followerCount());
+    assertEquals(0, user2.getFollowingCount());
+    assertEquals(1, user2.getFollowerCount());
   }
 
   @Test
@@ -86,11 +86,11 @@ class UserTest {
     user1.unfollow(user2);
 
     // then
-    assertEquals(0, user1.followingCount());
-    assertEquals(0, user1.followerCount());
+    assertEquals(0, user1.getFollowingCount());
+    assertEquals(0, user1.getFollowerCount());
 
-    assertEquals(0, user2.followingCount());
-    assertEquals(0, user2.followerCount());
+    assertEquals(0, user2.getFollowingCount());
+    assertEquals(0, user2.getFollowerCount());
   }
 
   @Test
@@ -100,11 +100,11 @@ class UserTest {
     user1.unfollow(user2);
 
     // then
-    assertEquals(0, user1.followingCount());
-    assertEquals(0, user1.followerCount());
+    assertEquals(0, user1.getFollowingCount());
+    assertEquals(0, user1.getFollowerCount());
 
-    assertEquals(0, user2.followingCount());
-    assertEquals(0, user2.followerCount());
+    assertEquals(0, user2.getFollowingCount());
+    assertEquals(0, user2.getFollowerCount());
   }
 
 }
