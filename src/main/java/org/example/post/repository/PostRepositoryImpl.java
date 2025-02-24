@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.post.application.interfaces.PostRepository;
 import org.example.post.domain.Post;
 import org.example.post.repository.entity.post.PostEntity;
+import org.example.post.repository.post_queue.UserPostQueueCommentRepository;
 import org.example.post.repository.jpa.JpaPostRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostRepositoryImpl implements PostRepository {
   
   private final JpaPostRepository jpaPostRepository;
+  private final UserPostQueueCommentRepository commandRepository;
   
   @Override
   @Transactional
@@ -24,6 +26,7 @@ public class PostRepositoryImpl implements PostRepository {
     }
     
     postEntity = jpaPostRepository.save(postEntity);
+    commandRepository.publishPost(postEntity);
     return postEntity.toPost();
   }
   

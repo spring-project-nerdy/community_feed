@@ -26,6 +26,8 @@ public class QPostEntity extends EntityPathBase<PostEntity> {
 
     public final org.example.user.repository.entity.QUserEntity author;
 
+    public final NumberPath<Integer> commentCount = createNumber("commentCount", Integer.class);
+
     public final StringPath content = createString("content");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);

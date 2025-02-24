@@ -2,7 +2,7 @@ package org.example.user.repository;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.example.user.application.UserRelationService;
+import org.example.post.repository.post_queue.UserPostQueueCommentRepository;
 import org.example.user.application.interfaces.UserRelationRepository;
 import org.example.user.domain.User;
 import org.example.user.repository.entity.UserEntity;
@@ -19,6 +19,7 @@ public class UserRelationRepositoryImpl implements UserRelationRepository {
   
   private final JpaUserRelationRepository jpaUserRelationRepository;
   private final JpaUserRepository jpaUserRepository;
+  private final UserPostQueueCommentRepository commandRepository;
   
   @Override
   public boolean isAlreadyFollow(User user, User targetUser) {
@@ -33,6 +34,7 @@ public class UserRelationRepositoryImpl implements UserRelationRepository {
         targetUser.getId());
     jpaUserRelationRepository.save(entity);
     jpaUserRepository.saveAll(List.of(new UserEntity(user), new UserEntity(targetUser)));
+    commandRepository.saveFollowPost(user.getId(), targetUser.getId());
   }
   
   @Override
@@ -42,5 +44,6 @@ public class UserRelationRepositoryImpl implements UserRelationRepository {
         targetUser.getId());
     jpaUserRelationRepository.delete(id);
     jpaUserRepository.saveAll(List.of(new UserEntity(user), new UserEntity(targetUser)));
+    commandRepository.deleteUnfollowPost(user.getId(), targetUser.getId());
   }
 }

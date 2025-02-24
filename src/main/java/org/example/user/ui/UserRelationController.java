@@ -1,5 +1,6 @@
 package org.example.user.ui;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.common.ui.Response;
 import org.example.user.application.UserRelationService;
@@ -19,6 +20,12 @@ public class UserRelationController {
   @PostMapping("/follow")
   public Response<Void> followerUser(@RequestBody FollowUserRequestDto dto) {
     userRelationService.follow(dto);
+    return Response.ok(null);
+  }
+  
+  @PostMapping("/unfollow")
+  public Response<Void> unfollowUser(@RequestBody @Valid FollowUserRequestDto dto) {
+    userRelationService.unfollow(dto);
     return Response.ok(null);
   }
 }
