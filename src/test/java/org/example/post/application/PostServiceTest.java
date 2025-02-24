@@ -3,7 +3,9 @@ package org.example.post.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.example.post.application.dto.LikeRequestDto;
+import org.example.post.application.dto.UpdatePostRequestDto;
 import org.example.post.domain.Post;
+import org.example.post.domain.content.PostPublicationState;
 import org.junit.jupiter.api.Test;
 
 class PostServiceTest extends PostApplicationTestTemplate {
@@ -24,7 +26,9 @@ class PostServiceTest extends PostApplicationTestTemplate {
     Post savePost = postService.createPost(postRequestDto);
     
     // when
-    Post updatePost = postService.updatePost(savePost.getId(), postRequestDto);
+    UpdatePostRequestDto updatePostRequestDto = new UpdatePostRequestDto(user.getId(),
+        "this is test content", PostPublicationState.PUBLIC);
+    Post updatePost = postService.updatePost(savePost.getId(), updatePostRequestDto);
     
     // then
     assertEquals(savePost.getId(), updatePost.getId());

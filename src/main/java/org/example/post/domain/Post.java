@@ -25,7 +25,7 @@ public class Post {
     return new Post(id, author, new PostContent(content), state);
   }
 
-  public static Post createDeaultPost(Long id, User author, String content) {
+  public static Post createDefaultPost(Long id, User author, String content) {
     return new Post(id, author, new PostContent(content), PostPublicationState.PUBLIC);
   }
 

@@ -30,7 +30,7 @@ public class QCommentEntity extends EntityPathBase<CommentEntity> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Integer> likeCounter = createNumber("likeCounter", Integer.class);
+    public final NumberPath<Integer> likeCount = createNumber("likeCount", Integer.class);
 
     public final org.example.post.repository.entity.post.QPostEntity post;
 
