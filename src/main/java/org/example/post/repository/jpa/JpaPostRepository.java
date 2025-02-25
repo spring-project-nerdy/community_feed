@@ -5,11 +5,12 @@ import org.example.post.repository.entity.post.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface JpaPostRepository extends JpaRepository<PostEntity, Long> {
   
   @Query("SELECT p.id FROM PostEntity p WHERE p.author.id = :authorId")
-  List<Long> findAllPostIdsByAuthorId(Long authorId);
+  List<Long> findAllPostIdsByAuthorId(@Param("authorId") Long authorId);
   
   @Modifying
   @Query(value = "UPDATE PostEntity p "
@@ -21,7 +22,7 @@ public interface JpaPostRepository extends JpaRepository<PostEntity, Long> {
   
   @Modifying
   @Query(value = "UPDATE PostEntity p "
-      + "SET p.likeCount = p.likeCount + :likcOunt, "
+      + "SET p.likeCount = p.likeCount + :likeCount, "
       + "p.updDt = now() "
       + "WHERE p.id = :postId")
   void updateLikeCount(Long postId, Integer likeCount);
