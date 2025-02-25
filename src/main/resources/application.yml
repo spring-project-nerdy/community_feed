@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/community_feed
+    url: jdbc:mariadb://localhost:23306/community_feed
     username: root
     password: 1qaz2wsx
 
