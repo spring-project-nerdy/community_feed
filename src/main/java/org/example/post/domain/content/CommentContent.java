@@ -1,21 +1,20 @@
 package org.example.post.domain.content;
 
-public class CommentContent extends Content {
+public class CommentContent extends Content{
 
-  private static final int MAX_COMMENT_LENGTH = 100;
+    private static final int MAX_POST_LENGTH = 100;
 
-  public CommentContent(String content) {
-    super(content);
-  }
-
-  @Override
-  protected void checkText(String contentText) {
-    if (contentText == null || contentText.isEmpty()) {
-      throw new IllegalArgumentException();
+    public CommentContent(String contentText) {
+        super(contentText);
     }
 
-    if (MAX_COMMENT_LENGTH < contentText.length()) {
-      throw new IllegalArgumentException();
+    @Override
+    protected void checkText(String contentText) {
+        if(contentText == null || contentText.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if(contentText.length() > MAX_POST_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
-  }
 }

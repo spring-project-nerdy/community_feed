@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/community_feed
-    username: root
-    password: 1qaz2wsx
+    url: jdbc:mariadb://localhost:3308/community_feed
+    username: chatsrvc
+    password: chatsrvc
 
   jpa:
     show-sql: true

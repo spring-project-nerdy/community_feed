@@ -1,27 +1,27 @@
 package org.example.post.domain.content;
 
-import org.example.post.domain.common.DatetimeInfo;
+import org.example.post.common.DateTimeInfo;
 
 public abstract class Content {
 
-  protected String contentText;
-  protected final DatetimeInfo dateTimeInfo;
+    String contentText;
+    final DateTimeInfo dateTimeInfo;
 
-  public Content(String contentText) {
-    checkText(contentText);
-    this.contentText = contentText;
-    this.dateTimeInfo = new DatetimeInfo();
-  }
+    public Content(String contentText) {
+        checkText(contentText);
+        this.contentText = contentText;
+        this.dateTimeInfo = new DateTimeInfo();
+    }
 
-  public void updateContent(String updateContent) {
-    checkText(updateContent);
-    this.contentText = updateContent;
-    this.dateTimeInfo.updateEditDatetime();
-  }
+    public void updateContent(String updateContent) {
+        checkText(updateContent);
+        this.contentText = updateContent;
+        this.dateTimeInfo.updateEditDateTime();
+    }
 
-  protected abstract void checkText(String contentText);
+    protected abstract void checkText(String contentText);
 
-  public String getContentText() {
-    return contentText;
-  }
+    public String getContentText() {
+        return contentText;
+    }
 }

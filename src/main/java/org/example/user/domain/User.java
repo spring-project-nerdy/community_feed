@@ -1,93 +1,77 @@
 package org.example.user.domain;
 
-import java.util.Objects;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import org.example.common.domain.PositiveIntegerCounter;
 
-@Getter
-@Builder
-@AllArgsConstructor
+import java.util.Objects;
+
 public class User {
+    private final Long id;
+    private final UserInfo userInfo;
+    private final PositiveIntegerCounter followingCounter;
+    private final PositiveIntegerCounter followerCounter;
 
-  private Long id;
-  private UserInfo info;
-  private PositiveIntegerCounter followingCount;
-  private PositiveIntegerCounter followerCount;
-
-  public User(Long id, UserInfo userinfo) {
-    if(userinfo == null) {
-      throw new IllegalArgumentException("UserInfo cannot be null");
+    public User(Long id, UserInfo userInfo) {
+        if(userInfo == null) {
+            throw new IllegalArgumentException();
+        }
+        this.id = id;
+        this.userInfo = userInfo;
+        this.followingCounter = new PositiveIntegerCounter();
+        this.followerCounter = new PositiveIntegerCounter();
     }
 
-    this.id = id;
-    this.info = userinfo;
-    this.followingCount = new PositiveIntegerCounter();
-    this.followerCount = new PositiveIntegerCounter();
-  }
+    public void follow(User targetUser) {
+        if(targetUser.equals(this)) {
+            throw new IllegalArgumentException();
+        }
 
-  public void follow(User targetUser) {
-    if (targetUser.equals(this)) {
-      throw new IllegalArgumentException("");
+        followingCounter.increase();
+        targetUser.increaseFollowerCount();
     }
 
-    followingCount.increase();
-    targetUser.increaseFollowerCount();
-  }
+    public void unfollow(User targetUser) {
+        if(this.equals(targetUser)) {
+            throw new IllegalArgumentException();
+        }
 
-  public void unfollow(User targetUser) {
-    if (this.equals(targetUser)) {
-      throw new IllegalArgumentException();
+        followingCounter.decrease();
+        targetUser.decreaseFollowerCount();
     }
 
-    followingCount.decrease();
-    targetUser.decreaseFollowerCount();
-  }
-
-  private void increaseFollowerCount() {
-    followerCount.increase();
-  }
-
-  private void decreaseFollowerCount() {
-    followerCount.decrease();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    private void increaseFollowerCount() {
+        followerCounter.increase();
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    private void decreaseFollowerCount() {
+        followerCounter.decrease();
     }
-    User user = (User) o;
-    return Objects.equals(id, user.id);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
 
-  public Long getId() {
-    return id;
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
-  public int getFollowingCount() {
-    return followingCount.getCount();
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public int getFollowerCount() {
-    return followerCount.getCount();
-  }
-  
-  public String getProfileImage() {
-    return info.getProfileImageUrl();
-  }
-  
-  public String getName() {
-    return info.getName();
-  }
-  
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public int getFollowingCounter() {
+        return followingCounter.getCount();
+    }
+
+    public int getFollowerCounter() {
+        return followerCounter.getCount();
+    }
 }

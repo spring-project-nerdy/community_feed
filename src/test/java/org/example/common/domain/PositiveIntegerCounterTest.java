@@ -1,46 +1,46 @@
 package org.example.common.domain;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
-class PositiveIntegerCounterTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-  @Test
-  void givenCreated_whenIncrease_thenCountIsOne() {
-    // given
-    PositiveIntegerCounter counter = new PositiveIntegerCounter();
+public class PositiveIntegerCounterTest {
 
-    // when
-    counter.increase();
+    @Test
+    void givenCreated_whenIncrease_thenCountIsOne() {
+        // given
+        PositiveIntegerCounter counter = new PositiveIntegerCounter();
 
-    // then
-    assertEquals(1, counter.getCount());
-  }
+        // when
+        counter.increase();
 
-  @Test
-  void givenCreatedAndIncrease_whenDecrease_thenCountIsZero() {
-    // given
-    PositiveIntegerCounter counter = new PositiveIntegerCounter();
-    counter.increase();
+        // then
+        assertEquals(1, counter.getCount());
+    }
 
-    // when
-    counter.decrease();
+    @Test
+    void givenCreatedAndIncrease_whenDecrease_thenCountIsZero() {
+        // given
+        PositiveIntegerCounter counter = new PositiveIntegerCounter();
 
-    // then
-    assertEquals(0, counter.getCount());
-  }
+        // when
+        counter.increase();
+        counter.decrease();
 
-  @Test
-  void givenCreated_whenDecrease_thenCountIzZero() {
-    // given
-    PositiveIntegerCounter counter = new PositiveIntegerCounter();
+        // then
+        assertEquals(0, counter.getCount());
+    }
 
-    // when
-    counter.decrease();
+    @Test
+    void givenCreated_whenDecrease_thenCountIsZero() {
+        // given
+        PositiveIntegerCounter counter = new PositiveIntegerCounter();
 
-    // then
-    assertEquals(0, counter.getCount());
-  }
+        // when
+        counter.decrease();
+
+        // then
+        assertEquals(0, counter.getCount());
+    }
 }

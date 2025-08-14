@@ -1,90 +1,55 @@
 package org.example.post.domain.comment;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import org.example.common.domain.PositiveIntegerCounter;
 import org.example.post.domain.Post;
-import org.example.post.domain.content.CommentContent;
 import org.example.post.domain.content.Content;
 import org.example.user.domain.User;
 
-@Builder
-@AllArgsConstructor
-@Getter
 public class Comment {
 
-  private final Long id;
-  private final Post post;
-  private final User author;
-  private final Content content;
-  private final PositiveIntegerCounter likeCount;
+    private final Long id;
+    private final Post post;
+    private final User author;
+    private final Content content;
 
-  public static Comment createComment(Post post, User author, String content) {
-    return new Comment(null, post, author, new CommentContent(content));
-  }
+    private final PositiveIntegerCounter likeCount;
 
-  public Comment(Long id, Post post, User author, Content content) {
+    public Comment(Long id, Post post, User author, Content content, PositiveIntegerCounter likeCount) {
+        if(author == null) {
+            throw new IllegalArgumentException();
+        }
 
-    if (author == null) {
-      throw new IllegalArgumentException();
+        if (post == null) {
+            throw new IllegalArgumentException();
+        }
+
+        if(content == null) {
+            throw new IllegalArgumentException();
+        }
+
+        this.id = id;
+        this.post = post;
+        this.author = author;
+        this.content = content;
+        this.likeCount = new PositiveIntegerCounter();
     }
 
-    if (post == null) {
-      throw new IllegalArgumentException();
+    public void like(User user) {
+        if(this.author.equals(user)) {
+            throw new IllegalArgumentException();
+        }
+        likeCount.increase();
     }
 
-    if (content == null) {
-      throw new IllegalArgumentException();
+    public void unLike(User user) {
+        likeCount.decrease();
     }
 
-    this.id = id;
-    this.post = post;
-    this.author = author;
-    this.content = content;
-    this.likeCount = new PositiveIntegerCounter();
-  }
+    public void updateComment(User user, String updateContent) {
+        if(!this.author.equals(user)) {
+            throw new IllegalArgumentException();
+        }
 
-  public void like(User user) {
-    if (this.author.equals(user)) {
-      throw new IllegalArgumentException();
+        this.content.updateContent(updateContent);
     }
-    likeCount.increase();
-  }
-
-  public void unlike() {
-    this.likeCount.decrease();
-  }
-
-  public void updateComment(User user, String updateContent) {
-    if(!this.author.equals(user)) {
-      throw new IllegalArgumentException();
-    }
-
-    this.content.updateContent(updateContent);
-  }
-
-  public int getLikeCount() {
-    return likeCount.getCount();
-  }
-
-  public String getContent() {
-    return content.getContentText();
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public Post getPost() {
-    return post;
-  }
-
-  public User getAuthor() {
-    return author;
-  }
-
-  public Content getContentObjets() {
-    return content;
-  }
 }
