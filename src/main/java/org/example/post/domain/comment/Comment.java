@@ -2,6 +2,7 @@ package org.example.post.domain.comment;
 
 import org.example.common.domain.PositiveIntegerCounter;
 import org.example.post.domain.Post;
+import org.example.post.domain.content.CommentContent;
 import org.example.post.domain.content.Content;
 import org.example.user.domain.User;
 
@@ -14,7 +15,11 @@ public class Comment {
 
     private final PositiveIntegerCounter likeCount;
 
-    public Comment(Long id, Post post, User author, Content content, PositiveIntegerCounter likeCount) {
+    public static Comment createComment(Post post, User author, String content) {
+        return new Comment(null, post, author, new CommentContent(content));
+    }
+
+    public Comment(Long id, Post post, User author, Content content) {
         if(author == null) {
             throw new IllegalArgumentException();
         }
@@ -41,7 +46,7 @@ public class Comment {
         likeCount.increase();
     }
 
-    public void unLike(User user) {
+    public void unlike() {
         likeCount.decrease();
     }
 
@@ -51,5 +56,13 @@ public class Comment {
         }
 
         this.content.updateContent(updateContent);
+    }
+
+    public int getLikeCount() {
+        return likeCount.getCount();
+    }
+
+    public String getContent() {
+        return content.getContentText();
     }
 }
