@@ -1,5 +1,6 @@
 package org.example.user.application;
 
+import org.example.fake.FakeObjectFactory;
 import org.example.user.application.dto.CreateUseRequestDto;
 import org.example.user.application.interfaces.UserRepository;
 import org.example.user.domain.User;
@@ -10,9 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceTest {
-
-    private final UserRepository userRepository = new FakeUserRepository();
-    private final UserService userService = new UserService(userRepository);
+    private final UserService userService = FakeObjectFactory.getUserService();
 
     @Test
     void givenUserInfoDto_whenCreateUser_thenCanFindUser() {
