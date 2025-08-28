@@ -1,14 +1,20 @@
 package org.example.user.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.example.common.domain.PositiveIntegerCounter;
 
 import java.util.Objects;
 
+@Getter
+@Builder
+@AllArgsConstructor
 public class User {
     private final Long id;
     private final UserInfo userInfo;
-    private final PositiveIntegerCounter followingCounter;
-    private final PositiveIntegerCounter followerCounter;
+    private final PositiveIntegerCounter followingCount;
+    private final PositiveIntegerCounter followerCount;
 
     public User(Long id, UserInfo userInfo) {
         if(userInfo == null) {
@@ -16,8 +22,8 @@ public class User {
         }
         this.id = id;
         this.userInfo = userInfo;
-        this.followingCounter = new PositiveIntegerCounter();
-        this.followerCounter = new PositiveIntegerCounter();
+        this.followingCount = new PositiveIntegerCounter();
+        this.followerCount = new PositiveIntegerCounter();
     }
 
     public void follow(User targetUser) {
@@ -25,7 +31,7 @@ public class User {
             throw new IllegalArgumentException();
         }
 
-        followingCounter.increase();
+        followingCount.increase();
         targetUser.increaseFollowerCount();
     }
 
@@ -34,16 +40,16 @@ public class User {
             throw new IllegalArgumentException();
         }
 
-        followingCounter.decrease();
+        followingCount.decrease();
         targetUser.decreaseFollowerCount();
     }
 
     private void increaseFollowerCount() {
-        followerCounter.increase();
+        followerCount.increase();
     }
 
     private void decreaseFollowerCount() {
-        followerCounter.decrease();
+        followerCount.decrease();
     }
 
     @Override
@@ -67,11 +73,19 @@ public class User {
         return userInfo;
     }
 
-    public int getFollowingCounter() {
-        return followingCounter.getCount();
+    public int followingCount() {
+        return followingCount.getCount();
     }
 
-    public int getFollowerCounter() {
-        return followerCounter.getCount();
+    public int followerCount() {
+        return followerCount.getCount();
+    }
+
+    public String getProfileImage() {
+        return userInfo.getProfileImageUrl();
+    }
+
+    public String getName() {
+        return userInfo.getName();
     }
 }

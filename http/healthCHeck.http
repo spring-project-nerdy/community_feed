@@ -1,0 +1,2 @@
+# HealthCheck API
+GET http://localhost:8080

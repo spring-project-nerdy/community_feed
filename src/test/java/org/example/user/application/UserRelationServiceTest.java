@@ -3,12 +3,7 @@ package org.example.user.application;
 import org.example.fake.FakeObjectFactory;
 import org.example.user.application.dto.CreateUseRequestDto;
 import org.example.user.application.dto.FollowUserRequestDto;
-import org.example.user.application.interfaces.UserRelationRepository;
-import org.example.user.application.interfaces.UserRepository;
 import org.example.user.domain.User;
-import org.example.user.domain.UserInfo;
-import org.example.user.repository.FakeUserRelationRepository;
-import org.example.user.repository.FakeUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,8 +33,8 @@ class UserRelationServiceTest {
         userRelationService.follow(requestDto);
 
         //then
-        assertEquals(1, user1.getFollowingCounter());
-        assertEquals(1, user2.getFollowerCounter());
+        assertEquals(1, user1.followingCount());
+        assertEquals(1, user2.followerCount());
     }
 
     @Test
@@ -69,8 +64,8 @@ class UserRelationServiceTest {
         userRelationService.unfollow(requestDto);
 
         //then
-        assertEquals(0, user1.getFollowingCounter());
-        assertEquals(0, user2.getFollowerCounter());
+        assertEquals(0, user1.followingCount());
+        assertEquals(0, user2.followerCount());
     }
 
     @Test
