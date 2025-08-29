@@ -65,14 +65,6 @@ public class User {
         return Objects.hash(id);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
     public int followingCount() {
         return followingCount.getCount();
     }

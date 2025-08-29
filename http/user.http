@@ -1,0 +1,17 @@
+### 유저 생성
+POST localhost:8080/user
+Content-Type: application/json
+
+{
+  "name": "user1",
+  "profileImageUrl": ""
+}
+
+### 유저 정보 조회
+GET localhost:8080/user/4
+
+### 유저 팔로워 조회
+GET localhost:8080/user/6/follower
+
+### 유저 팔로윙 조회
+GET localhost:8080/user/4/following

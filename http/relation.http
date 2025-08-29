@@ -1,0 +1,17 @@
+### follower
+POST localhost:8080/relation/follow
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "targetUserId": 6
+}
+
+### unfollower
+POST localhost:8080/relation/unfollow
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "targetUserId": 5
+}

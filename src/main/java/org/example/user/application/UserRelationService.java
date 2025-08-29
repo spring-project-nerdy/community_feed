@@ -3,7 +3,9 @@ package org.example.user.application;
 import org.example.user.application.dto.FollowUserRequestDto;
 import org.example.user.application.interfaces.UserRelationRepository;
 import org.example.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserRelationService {
 
     private final UserService userService;
@@ -34,7 +36,8 @@ public class UserRelationService {
             throw new IllegalArgumentException();
         }
 
+        // TODO: 추후 조건 검사 필요
         user.unfollow(targetUser);
-        userRelationRepository.save(user, targetUser);
+        userRelationRepository.delete(user, targetUser);
     }
 }
