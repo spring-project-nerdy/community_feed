@@ -4,8 +4,8 @@ POST http://localhost:8080/post
 Content-Type: application/json
 
 {
-  "userId": 4,
-  "content": "글쓰기 테스트",
+  "userId": 2,
+  "content": "글쓰기 테스트 1번 유저에게 보여야 한다",
   "state": "PUBLIC"
 }
 
@@ -27,8 +27,8 @@ POST http://localhost:8080/post/like
 Content-Type: application/json
 
 {
-  "targetId": 1,
-  "userId": 5
+  "targetId": 2,
+  "userId": 1
 }
 
 ### 글 좋아요 취소

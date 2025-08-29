@@ -3,8 +3,8 @@ POST localhost:8080/relation/follow
 Content-Type: application/json
 
 {
-  "userId": 4,
-  "targetUserId": 6
+  "userId": 1,
+  "targetUserId": 2
 }
 
 ### 팔로워 취소
@@ -12,6 +12,6 @@ POST localhost:8080/relation/unfollow
 Content-Type: application/json
 
 {
-  "userId": 4,
-  "targetUserId": 5
+  "userId": 1,
+  "targetUserId": 2
 }

@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "postId": 1,
-  "userId": 5,
+  "userId": 2,
   "content": "이건 신규 댓글입니다."
 }
 
