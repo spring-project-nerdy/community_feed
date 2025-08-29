@@ -1,5 +1,7 @@
 package org.example.post.application;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.post.application.dto.CreatePostRequestDto;
 import org.example.post.application.dto.LikeRequestDto;
 import org.example.post.application.dto.UpdatePostRequestDto;
@@ -8,7 +10,12 @@ import org.example.post.application.interfaces.PostRepository;
 import org.example.post.domain.Post;
 import org.example.user.application.UserService;
 import org.example.user.domain.User;
+import org.springframework.stereotype.Service;
 
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class PostService {
 
     private final UserService userService;
@@ -17,14 +24,8 @@ public class PostService {
 
     private final LikeRepository likeRepository;
 
-    public PostService(UserService userService, PostRepository postRepository, LikeRepository likeRepository) {
-        this.userService = userService;
-        this.postRepository = postRepository;
-        this.likeRepository = likeRepository;
-    }
-
     public Post getPost(Long id) {
-        return postRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Post not found"));
+        return postRepository.findById(id);
     }
 
     public Post createPost(CreatePostRequestDto dto) {

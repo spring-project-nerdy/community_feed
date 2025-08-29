@@ -1,4 +1,4 @@
-### follower
+### 팔로워
 POST localhost:8080/relation/follow
 Content-Type: application/json
 
@@ -7,7 +7,7 @@ Content-Type: application/json
   "targetUserId": 6
 }
 
-### unfollower
+### 팔로워 취소
 POST localhost:8080/relation/unfollow
 Content-Type: application/json
 

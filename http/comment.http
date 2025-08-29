@@ -1,0 +1,38 @@
+### 댓글 등록
+
+POST http://localhost:8080/comment
+Content-Type: application/json
+
+{
+  "postId": 1,
+  "userId": 5,
+  "content": "이건 신규 댓글입니다."
+}
+
+### 댓글 수정
+
+PATCH http://localhost:8080/comment/1
+Content-Type: application/json
+
+{
+"userId": 4,
+"content": "이건 신규 수정 입니다.."
+}
+
+### 댓글 좋아요
+POST http://localhost:8080/comment/like
+Content-Type: application/json
+
+{
+  "targetId": 2,
+  "userId": 4
+}
+
+### 댓글 좋아요 취소
+POST http://localhost:8080/comment/unlike
+Content-Type: application/json
+
+{
+  "targetId": 2,
+  "userId": 4
+}

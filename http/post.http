@@ -1,0 +1,41 @@
+### 글 등록
+
+POST http://localhost:8080/post
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "content": "글쓰기 테스트",
+  "state": "PUBLIC"
+}
+
+
+### 글 수정
+
+PATCH http://localhost:8080/post/1
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "content": "글쓰기 수정 테스트 입니다.",
+  "state": "PUBLIC"
+}
+
+
+### 글 좋아요
+POST http://localhost:8080/post/like
+Content-Type: application/json
+
+{
+  "targetId": 1,
+  "userId": 5
+}
+
+### 글 좋아요 취소
+POST http://localhost:8080/post/unlike
+Content-Type: application/json
+
+{
+  "targetId": 1,
+  "userId": 5
+}

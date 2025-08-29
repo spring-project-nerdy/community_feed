@@ -1,5 +1,6 @@
 package org.example.post.application;
 
+import lombok.RequiredArgsConstructor;
 import org.example.post.application.dto.CreateCommentRequestDto;
 import org.example.post.application.dto.LikeRequestDto;
 import org.example.post.application.dto.UpdateCommentRequestDto;
@@ -9,25 +10,19 @@ import org.example.post.domain.Post;
 import org.example.post.domain.comment.Comment;
 import org.example.user.application.UserService;
 import org.example.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class CommentService {
-
 
     private final UserService userService;
     private final PostService postService;
     private final CommentRepository commentRepository;
     private final LikeRepository likeRepository;
 
-    public CommentService(UserService userService, PostService postService, CommentRepository commentRepository, LikeRepository likeRepository) {
-
-        this.userService = userService;
-        this.postService = postService;
-        this.commentRepository = commentRepository;
-        this.likeRepository = likeRepository;
-    }
-
     public Comment getComment(Long id) {
-        return commentRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        return commentRepository.findById(id);
     }
 
     public Comment createComment(CreateCommentRequestDto dto) {
@@ -38,8 +33,8 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public Comment updateComment(UpdateCommentRequestDto dto) {
-        Comment comment = getComment(dto.commentId());
+    public Comment updateComment(Long commentId, UpdateCommentRequestDto dto) {
+        Comment comment = getComment(commentId);
         User user = userService.getUser(dto.userId());
 
         comment.updateComment(user, dto.content());
